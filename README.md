@@ -19,13 +19,22 @@ A local-first, Dynamic Island-style desktop control centre for Windows 11. Desig
 | Camera | Local camera preview and photo capture only after the user explicitly opens the camera. It stops when the island collapses or the app exits. |
 | System tray | Reopen or exit WinIsland from the notification area. |
 
-## Install
+## Build the Windows app from GitHub (phone-friendly)
 
-1. Open the repository's [Releases](https://github.com/Vxn1r/Vxn1r-WinIsland/releases) page.
-2. Download `WinIsland-win-x64.zip` from the latest release.
-3. Extract the complete ZIP to a normal folder.
-4. Double-click `Install.bat` and choose whether WinIsland should start when you sign in.
-5. Open **Start** and search for **WinIsland**.
+1. Open the repository's **Actions** tab.
+2. Select **Build WinIsland** from the workflow list.
+3. Press **Run workflow**, keep branch set to `main`, and press **Run workflow** again.
+4. Wait for the workflow to finish. The build and unit-test job must be green.
+5. The release job then publishes `v0.1.0`. Open [Releases](https://github.com/Vxn1r/Vxn1r-WinIsland/releases) and download `WinIsland-win-x64.zip`.
+
+A push to `main` or a version tag also starts the workflow automatically. The manual workflow button is provided as a fallback.
+
+## Install on Windows 11
+
+1. On your Dell, download `WinIsland-win-x64.zip` from the latest successful release.
+2. Extract the complete ZIP to a normal folder.
+3. Double-click `Install.bat` and choose whether WinIsland should start when you sign in.
+4. Open **Start** and search for **WinIsland**.
 
 The installer copies the app to `%LOCALAPPDATA%\Programs\WinIsland` and adds Start Menu shortcuts. It does not require administrator permission. Use **Uninstall WinIsland** in the Start Menu to remove the app and its optional startup shortcut.
 
@@ -55,8 +64,6 @@ dotnet publish .\src\WinIsland\WinIsland.csproj `
   -p:IncludeNativeLibrariesForSelfExtract=true `
   --output .\publish
 ```
-
-GitHub Actions runs restore, build, and unit tests on a Windows runner. A successful push to `main` creates the initial `v0.1.0` release. For later releases, push a new version tag such as `v0.2.0` after updating the project version in `src/WinIsland/WinIsland.csproj` and the changelog.
 
 ## Privacy and security
 
