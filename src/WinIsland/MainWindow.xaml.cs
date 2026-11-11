@@ -6,7 +6,11 @@ using System.Windows.Media.Imaging;
 using System.Windows.Threading;
 using WpfSaveFileDialog = Microsoft.Win32.SaveFileDialog;
 using WpfMessageBox = System.Windows.MessageBox;
-using OpenCvSharp;
+using Cv2 = OpenCvSharp.Cv2;
+using Mat = OpenCvSharp.Mat;
+using VideoCapture = OpenCvSharp.VideoCapture;
+using VideoCaptureAPIs = OpenCvSharp.VideoCaptureAPIs;
+using VideoCaptureProperties = OpenCvSharp.VideoCaptureProperties;
 using Windows.Media.Control;
 using WinIsland.Services;
 using Forms = System.Windows.Forms;
@@ -239,7 +243,7 @@ public partial class MainWindow : Window
 
     private void ExitButton_Click(object sender, RoutedEventArgs e) => System.Windows.Application.Current.Shutdown();
 
-    private void Window_KeyDown(object sender, KeyEventArgs e)
+    private void Window_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
     {
         if (e.Key == Key.Escape && _isExpanded)
         {
