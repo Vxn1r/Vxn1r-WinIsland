@@ -1,0 +1,257 @@
+<Window x:Class="WinIsland.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="WinIsland"
+        Width="370" Height="82"
+        WindowStyle="None" ResizeMode="NoResize"
+        AllowsTransparency="True" Background="Transparent"
+        Topmost="True" ShowInTaskbar="False"
+        WindowStartupLocation="Manual"
+        Loaded="Window_Loaded" Closing="Window_Closing"
+        KeyDown="Window_KeyDown">
+    <Border x:Name="Surface"
+            Background="{StaticResource IslandBackground}"
+            BorderBrush="#FF282D38" BorderThickness="1"
+            CornerRadius="32" Padding="7">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="66" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <!-- Compact island: click anywhere in this bar to expand. -->
+            <Border x:Name="CompactBar" Grid.Row="0" CornerRadius="25"
+                    Background="#FF11151D" Padding="13,8"
+                    MouseLeftButtonUp="CompactBar_MouseLeftButtonUp"
+                    ToolTip="Click to open WinIsland controls">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="36" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Border Width="29" Height="29" CornerRadius="15"
+                            Background="#FFB8F36B" VerticalAlignment="Center">
+                        <TextBlock Text="W" Foreground="#FF10140B" FontWeight="Bold"
+                                   FontSize="15" HorizontalAlignment="Center"
+                                   VerticalAlignment="Center" />
+                    </Border>
+                    <StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="8,0,6,0">
+                        <TextBlock Text="WINISLAND" FontSize="10" FontWeight="Bold"
+                                   Foreground="#FFB8F36B" />
+                        <TextBlock x:Name="CompactStatusText" Text="Your Windows, at a glance"
+                                   FontSize="11" Foreground="#FFD8DCE5"
+                                   TextTrimming="CharacterEllipsis" />
+                    </StackPanel>
+                    <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center">
+                        <Ellipse x:Name="BatteryDot" Width="6" Height="6"
+                                 Fill="#FFB8F36B" Margin="0,0,6,0" />
+                        <TextBlock x:Name="CompactBatteryText" Text="--%"
+                                   FontSize="11" FontWeight="SemiBold"
+                                   VerticalAlignment="Center" />
+                        <TextBlock Text="  ⌄" Foreground="#FF858E9E"
+                                   FontSize="14" VerticalAlignment="Center" />
+                    </StackPanel>
+                </Grid>
+            </Border>
+
+            <!-- Expanded control center. -->
+            <Grid x:Name="ExpandedPanel" Grid.Row="1" Visibility="Collapsed"
+                  Margin="10,10,10,10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0" Margin="4,0,4,12">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <StackPanel>
+                        <TextBlock Text="CONTROL CENTER" FontSize="10"
+                                   FontWeight="Bold" Foreground="#FFB8F36B" />
+                        <TextBlock Text="Everything in one place" FontSize="18"
+                                   FontWeight="SemiBold" Margin="0,2,0,0" />
+                    </StackPanel>
+                    <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
+                        <Button Style="{StaticResource ActionButton}" Content="COLLAPSE"
+                                Click="CollapseButton_Click" Margin="0,0,7,0" />
+                        <Button Style="{StaticResource ActionButton}" Content="EXIT"
+                                Click="ExitButton_Click" />
+                    </StackPanel>
+                </Grid>
+
+                <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto"
+                              HorizontalScrollBarVisibility="Disabled">
+                    <StackPanel Margin="2,0,5,4">
+                        <!-- Spotify -->
+                        <Border Style="{StaticResource CardStyle}" Margin="0,0,0,10">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <StackPanel VerticalAlignment="Center">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="SPOTIFY" FontSize="10" FontWeight="Bold"
+                                                   Foreground="#FFB8F36B" />
+                                        <TextBlock x:Name="SpotifyStateText" Text="  NOT CONNECTED"
+                                                   FontSize="9" Foreground="#FF8D95A5" />
+                                    </StackPanel>
+                                    <TextBlock x:Name="TrackTitleText" Text="Open Spotify to start listening"
+                                               FontSize="15" FontWeight="SemiBold"
+                                               Margin="0,6,0,2" TextTrimming="CharacterEllipsis" />
+                                    <TextBlock x:Name="TrackArtistText" Text="Playback controls use Windows media sessions"
+                                               FontSize="11" Foreground="#FF8D95A5"
+                                               TextTrimming="CharacterEllipsis" />
+                                </StackPanel>
+                                <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
+                                    <Button Style="{StaticResource ActionButton}" Content="PREV"
+                                            Click="PreviousTrackButton_Click" Margin="0,0,6,0" />
+                                    <Button x:Name="PlayPauseButton" Style="{StaticResource ActionButton}"
+                                            Content="PLAY / PAUSE" Click="PlayPauseButton_Click"
+                                            Margin="0,0,6,0" />
+                                    <Button Style="{StaticResource ActionButton}" Content="NEXT"
+                                            Click="NextTrackButton_Click" Margin="0,0,6,0" />
+                                    <Button Style="{StaticResource ActionButton}" Content="OPEN APP"
+                                            Click="OpenSpotifyButton_Click" />
+                                </StackPanel>
+                            </Grid>
+                        </Border>
+
+                        <!-- Battery / volume / brightness -->
+                        <Grid Margin="0,0,0,10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="1*" />
+                            </Grid.ColumnDefinitions>
+                            <Border Style="{StaticResource CardStyle}" Margin="0,0,5,0">
+                                <StackPanel>
+                                    <TextBlock Text="BATTERY" FontSize="10" FontWeight="Bold"
+                                               Foreground="#FF8D95A5" />
+                                    <TextBlock x:Name="BatteryPercentText" Text="--%" FontSize="25"
+                                               FontWeight="SemiBold" Margin="0,5,0,0" />
+                                    <TextBlock x:Name="BatterySourceText" Text="Checking power"
+                                               FontSize="10" Foreground="#FF8D95A5"
+                                               TextWrapping="Wrap" />
+                                </StackPanel>
+                            </Border>
+                            <Border Grid.Column="1" Style="{StaticResource CardStyle}" Margin="3,0">
+                                <StackPanel>
+                                    <Grid>
+                                        <TextBlock Text="VOLUME" FontSize="10" FontWeight="Bold"
+                                                   Foreground="#FF8D95A5" />
+                                        <TextBlock x:Name="VolumeValueText" Text="--%" FontSize="10"
+                                                   Foreground="#FFD8DCE5" HorizontalAlignment="Right" />
+                                    </Grid>
+                                    <Slider x:Name="VolumeSlider" Style="{StaticResource IslandSlider}"
+                                            Minimum="0" Maximum="100" Value="40"
+                                            ValueChanged="VolumeSlider_ValueChanged" />
+                                    <Button x:Name="MuteButton" Content="MUTE" Style="{StaticResource ActionButton}"
+                                            HorizontalAlignment="Left" Padding="10,6"
+                                            Click="MuteButton_Click" />
+                                </StackPanel>
+                            </Border>
+                            <Border Grid.Column="2" Style="{StaticResource CardStyle}" Margin="5,0,0,0">
+                                <StackPanel>
+                                    <Grid>
+                                        <TextBlock Text="BRIGHTNESS" FontSize="10" FontWeight="Bold"
+                                                   Foreground="#FF8D95A5" />
+                                        <TextBlock x:Name="BrightnessValueText" Text="--%" FontSize="10"
+                                                   Foreground="#FFD8DCE5" HorizontalAlignment="Right" />
+                                    </Grid>
+                                    <Slider x:Name="BrightnessSlider" Style="{StaticResource IslandSlider}"
+                                            Minimum="0" Maximum="100" Value="50"
+                                            ValueChanged="BrightnessSlider_ValueChanged" />
+                                    <TextBlock x:Name="BrightnessHintText" Text="Internal display"
+                                               FontSize="10" Foreground="#FF8D95A5" />
+                                </StackPanel>
+                            </Border>
+                        </Grid>
+
+                        <!-- Manual tools -->
+                        <Grid Margin="0,0,0,10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="1*" />
+                            </Grid.ColumnDefinitions>
+                            <Border Style="{StaticResource CardStyle}" Margin="0,0,5,0">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <StackPanel VerticalAlignment="Center">
+                                        <TextBlock Text="SCREENSHOT" FontSize="10" FontWeight="Bold"
+                                                   Foreground="#FF8D95A5" />
+                                        <TextBlock Text="Capture all displays" FontSize="13"
+                                                   FontWeight="SemiBold" Margin="0,4,0,0" />
+                                        <TextBlock Text="Nothing is captured until you press the button."
+                                                   FontSize="10" Foreground="#FF8D95A5"
+                                                   TextWrapping="Wrap" Margin="0,3,0,0" />
+                                    </StackPanel>
+                                    <Button Grid.Column="1" Style="{StaticResource ActionButton}"
+                                            Content="CAPTURE" VerticalAlignment="Center"
+                                            Click="ScreenshotButton_Click" />
+                                </Grid>
+                            </Border>
+                            <Border Grid.Column="1" Style="{StaticResource CardStyle}" Margin="5,0,0,0">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <StackPanel VerticalAlignment="Center">
+                                        <TextBlock Text="CAMERA" FontSize="10" FontWeight="Bold"
+                                                   Foreground="#FF8D95A5" />
+                                        <TextBlock Text="Local preview only" FontSize="13"
+                                                   FontWeight="SemiBold" Margin="0,4,0,0" />
+                                        <TextBlock x:Name="CameraStatusText" Text="Camera is off"
+                                                   FontSize="10" Foreground="#FF8D95A5"
+                                                   TextWrapping="Wrap" Margin="0,3,0,0" />
+                                    </StackPanel>
+                                    <Button x:Name="CameraToggleButton" Grid.Column="1"
+                                            Style="{StaticResource ActionButton}" Content="OPEN"
+                                            VerticalAlignment="Center" Click="CameraToggleButton_Click" />
+                                </Grid>
+                            </Border>
+                        </Grid>
+
+                        <!-- Only visible during an explicit camera session. -->
+                        <Border x:Name="CameraPanel" Style="{StaticResource CardStyle}"
+                                Visibility="Collapsed" Margin="0,0,0,10">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <StackPanel>
+                                    <TextBlock Text="LIVE CAMERA PREVIEW" FontSize="10"
+                                               FontWeight="Bold" Foreground="#FFB8F36B"
+                                               Margin="0,0,0,9" />
+                                    <Border Background="#FF080A0F" CornerRadius="12" Height="190">
+                                        <Image x:Name="CameraPreview" Stretch="Uniform" />
+                                    </Border>
+                                </StackPanel>
+                                <StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="15,0,0,0">
+                                    <Button Style="{StaticResource ActionButton}" Content="SAVE PHOTO"
+                                            Click="CameraCaptureButton_Click" Margin="0,0,0,8" />
+                                    <Button Style="{StaticResource ActionButton}" Content="TURN OFF"
+                                            Click="CameraStopButton_Click" />
+                                    <TextBlock Text="Preview stays on this device. It stops when you collapse the island."
+                                               FontSize="10" Foreground="#FF8D95A5"
+                                               TextWrapping="Wrap" Width="132" Margin="0,12,0,0" />
+                                </StackPanel>
+                            </Grid>
+                        </Border>
+
+                        <TextBlock Text="LOCAL-FIRST · NO TELEMETRY · CAMERA AND SCREEN CAPTURE ARE MANUAL"
+                                   FontSize="9" Foreground="#FF697282" HorizontalAlignment="Center"
+                                   Margin="0,2,0,6" />
+                    </StackPanel>
+                </ScrollViewer>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>

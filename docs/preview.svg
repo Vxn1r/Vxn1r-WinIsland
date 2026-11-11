@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="900" viewBox="0 0 1440 900" role="img" aria-labelledby="title desc">
+<title id="title">WinIsland interface concept</title>
+<desc id="desc">Dark Windows Dynamic Island mockup with battery, Spotify, volume, brightness, screenshot and camera cards.</desc>
+<defs>
+  <linearGradient id="bg" x2="0" y2="1"><stop stop-color="#11131a"/><stop offset="1" stop-color="#090b10"/></linearGradient>
+  <linearGradient id="pill" x2="1"><stop stop-color="#10141c"/><stop offset="1" stop-color="#080a0f"/></linearGradient>
+  <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="18"/></filter>
+</defs>
+<rect width="1440" height="900" fill="url(#bg)"/>
+<ellipse cx="720" cy="130" rx="380" ry="100" fill="#000" opacity=".22" filter="url(#shadow)"/>
+<rect x="491" y="30" width="458" height="76" rx="38" fill="url(#pill)" stroke="#343b49" stroke-width="2"/>
+<circle cx="528" cy="68" r="18" fill="#b8f36b"/><text x="528" y="75" text-anchor="middle" fill="#10140b" font-family="Segoe UI,Arial" font-weight="800" font-size="20">W</text>
+<text x="560" y="60" fill="#b8f36b" font-family="Segoe UI,Arial" font-weight="700" font-size="13">WINISLAND</text>
+<text x="560" y="82" fill="#d8dce5" font-family="Segoe UI,Arial" font-size="15">Your Windows, at a glance</text>
+<circle cx="888" cy="68" r="6" fill="#b8f36b"/><text x="900" y="74" fill="#f4f6fa" font-family="Segoe UI,Arial" font-weight="700" font-size="16">86%</text>
+<rect x="300" y="136" width="840" height="726" rx="34" fill="#0b0e14" stroke="#303744" stroke-width="2"/>
+<text x="340" y="180" fill="#b8f36b" font-family="Segoe UI,Arial" font-weight="700" font-size="13" letter-spacing="1.5">CONTROL CENTER</text>
+<text x="340" y="224" fill="#f4f6fa" font-family="Segoe UI,Arial" font-weight="700" font-size="29">Everything in one place</text>
+<rect x="931" y="175" width="88" height="42" rx="12" fill="#242a36" stroke="#343b49"/><text x="975" y="201" text-anchor="middle" fill="#f4f6fa" font-family="Segoe UI,Arial" font-weight="700" font-size="11">COLLAPSE</text>
+<rect x="1028" y="175" width="64" height="42" rx="12" fill="#242a36" stroke="#343b49"/><text x="1060" y="201" text-anchor="middle" fill="#f4f6fa" font-family="Segoe UI,Arial" font-weight="700" font-size="11">EXIT</text>
+<g fill="#151923" stroke="#343b49" stroke-width="1.5">
+  <rect x="340" y="250" width="760" height="136" rx="20"/>
+  <rect x="340" y="406" width="240" height="135" rx="18"/>
+  <rect x="600" y="406" width="240" height="135" rx="18"/>
+  <rect x="860" y="406" width="240" height="135" rx="18"/>
+  <rect x="340" y="561" width="370" height="160" rx="18"/>
+  <rect x="730" y="561" width="370" height="160" rx="18"/>
+</g>
+<text x="370" y="281" fill="#b8f36b" font-family="Segoe UI,Arial" font-size="12" font-weight="700">SPOTIFY · PLAYING</text>
+<text x="370" y="328" fill="#f4f6fa" font-family="Segoe UI,Arial" font-size="27" font-weight="700">Midnight City</text>
+<text x="370" y="354" fill="#8d95a5" font-family="Segoe UI,Arial" font-size="15">M83</text>
+<g font-family="Segoe UI,Arial" font-size="12" font-weight="700" text-anchor="middle">
+  <rect x="760" y="294" width="75" height="42" rx="11" fill="#242a36" stroke="#424a59"/><text x="797" y="320" fill="#f4f6fa">PREV</text>
+  <rect x="845" y="294" width="75" height="42" rx="11" fill="#242a36" stroke="#424a59"/><text x="882" y="320" fill="#f4f6fa">PAUSE</text>
+  <rect x="930" y="294" width="75" height="42" rx="11" fill="#242a36" stroke="#424a59"/><text x="967" y="320" fill="#f4f6fa">NEXT</text>
+  <rect x="1015" y="294" width="70" height="42" rx="11" fill="#242a36" stroke="#424a59"/><text x="1050" y="320" fill="#f4f6fa">OPEN</text>
+</g>
+<g font-family="Segoe UI,Arial">
+  <text x="360" y="438" fill="#8d95a5" font-size="12" font-weight="700">BATTERY</text>
+  <text x="360" y="490" fill="#f4f6fa" font-size="32" font-weight="700">86%</text>
+  <text x="360" y="520" fill="#8d95a5" font-size="12">Plugged in · Charging</text>
+  <text x="620" y="438" fill="#8d95a5" font-size="12" font-weight="700">VOLUME</text>
+  <text x="810" y="438" text-anchor="end" fill="#d8dce5" font-size="12">42%</text>
+  <rect x="620" y="465" width="196" height="7" rx="4" fill="#323a48"/><rect x="620" y="465" width="82" height="7" rx="4" fill="#b8f36b"/>
+  <text x="880" y="438" fill="#8d95a5" font-size="12" font-weight="700">BRIGHTNESS</text>
+  <text x="1070" y="438" text-anchor="end" fill="#d8dce5" font-size="12">68%</text>
+  <rect x="880" y="465" width="196" height="7" rx="4" fill="#323a48"/><rect x="880" y="465" width="133" height="7" rx="4" fill="#b8f36b"/>
+  <text x="370" y="595" fill="#8d95a5" font-size="12" font-weight="700">SCREENSHOT</text>
+  <text x="370" y="635" fill="#f4f6fa" font-size="19" font-weight="700">Capture all displays</text>
+  <text x="370" y="663" fill="#8d95a5" font-size="12">Nothing is captured until you press the button.</text>
+  <rect x="568" y="675" width="112" height="38" rx="10" fill="#242a36" stroke="#424a59"/><text x="624" y="699" text-anchor="middle" fill="#f4f6fa" font-size="11" font-weight="700">CAPTURE</text>
+  <text x="760" y="595" fill="#8d95a5" font-size="12" font-weight="700">CAMERA</text>
+  <text x="760" y="635" fill="#f4f6fa" font-size="19" font-weight="700">Local preview only</text>
+  <text x="760" y="663" fill="#8d95a5" font-size="12">Camera is off</text>
+  <rect x="960" y="675" width="112" height="38" rx="10" fill="#242a36" stroke="#424a59"/><text x="1016" y="699" text-anchor="middle" fill="#f4f6fa" font-size="11" font-weight="700">OPEN</text>
+</g>
+<text x="720" y="785" text-anchor="middle" fill="#697282" font-family="Segoe UI,Arial" font-weight="700" font-size="10" letter-spacing="1.2">LOCAL-FIRST · NO TELEMETRY · CAMERA AND SCREEN CAPTURE ARE MANUAL</text>
+</svg>

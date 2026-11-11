@@ -2,7 +2,7 @@
 
 A local-first, Dynamic Island-style desktop control centre for Windows 11. Designed around the Dell 15 260 with Intel Core Ultra 5 225H, and built for Windows 11 x64 PCs generally.
 
-![WinIsland interface concept](docs/preview.png)
+![WinIsland interface concept](docs/preview.svg)
 
 > This is a design preview, not a screenshot from a running build.
 
