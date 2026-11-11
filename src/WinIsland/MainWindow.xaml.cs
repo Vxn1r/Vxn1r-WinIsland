@@ -124,7 +124,6 @@ public partial class MainWindow : Window
         catch
         {
             _updatingControls = false;
-            // A failed hardware query should never terminate the island.
         }
         finally
         {
@@ -304,7 +303,6 @@ public partial class MainWindow : Window
         if (dialog.ShowDialog(this) != true)
             return;
 
-        // Hide the always-on-top island so it does not cover the desktop being captured.
         Exception? failure = null;
         Hide();
         await Task.Delay(180);
@@ -322,8 +320,7 @@ public partial class MainWindow : Window
         }
 
         if (failure is null)
-            WpfMessageBox.Show(this, $"Screenshot saved to:
-{dialog.FileName}",
+            WpfMessageBox.Show(this, $"Screenshot saved to:\n{dialog.FileName}",
                 "WinIsland", MessageBoxButton.OK, MessageBoxImage.Information);
         else
             WpfMessageBox.Show(this, $"Screenshot failed: {failure.Message}",
@@ -465,8 +462,7 @@ public partial class MainWindow : Window
         try
         {
             File.WriteAllBytes(dialog.FileName, _lastCameraFrame);
-            WpfMessageBox.Show(this, $"Photo saved to:
-{dialog.FileName}",
+            WpfMessageBox.Show(this, $"Photo saved to:\n{dialog.FileName}",
                 "WinIsland", MessageBoxButton.OK, MessageBoxImage.Information);
         }
         catch (Exception ex)
